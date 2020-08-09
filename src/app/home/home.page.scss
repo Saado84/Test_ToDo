@@ -1,0 +1,24 @@
+
+#container {
+  width: 100%;
+  background: linear-gradient(#FBC99A, #F68184);
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  padding-top: 30px;
+  margin-top: 30px;
+  min-height: 75%;
+}
+ion-content ion-toolbar {
+  --background: translucent;
+}
+.bold_note {
+  color: black;
+  font-weight: 800;
+  font-size: 23px;
+  margin: 3px 8px;
+}
+ion-card {
+  margin: 16px!important;
+  border-radius: 30px;
+}
+

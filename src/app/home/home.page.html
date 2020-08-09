@@ -1,0 +1,83 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      Objectifs
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Objectifs</ion-title>
+      <ion-buttons slot="end">
+        <ion-button color="dark" (click)="openAddPage()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+ </ion-header>
+  
+    
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-item-sliding *ngFor="let goal of goals">
+        <ion-item lines="none" >
+          <ion-badge [color]="goal.color" slot="start" class="badge_point">•</ion-badge>
+          <ion-label>
+            <h2>{{ goal.text }}</h2>
+          </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="editGoal(goal)">
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="deletGoal(goal)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+   </ion-reorder-group>
+
+
+ <div id="container">
+
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title color="ligth" size="large">Tâches</ion-title>
+        <ion-note slot="end" class="bold_note">{{ taskPercentage }}%</ion-note>
+        <ion-buttons slot="end">
+          <ion-button color="dark" (click)="openAddPage()">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-card *ngFor="let task of tasks">
+      <ion-item lines="none" (click)="taskClicked(task)">
+        <ion-note slot="start">{{ task.date }}</ion-note>
+        <ion-label text-wrap>
+          <h2 *ngIf="!task.checked">{{ task.text }}</h2>
+          <h2 *ngIf="task.checked" style="text-decoration:line-through;">{{ task.text }}</h2>
+          <ion-badge [color]="task.color">{{ task.categorie }}</ion-badge>
+        </ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="task.checked" [color]="task.color"></ion-checkbox>
+      </ion-item>
+    </ion-card>
+
+  </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="openAddPage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+
+
+
